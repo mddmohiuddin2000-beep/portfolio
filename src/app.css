@@ -666,3 +666,54 @@ kbd.palette-kbd {
 @media (prefers-reduced-motion: reduce) {
   .palette[open] { animation: none; }
 }
+
+/* ============================================================
+   CV chooser — opened from the hero CV tile
+   ============================================================ */
+.cv-menu {
+  padding: 0;
+  width: min(92vw, 380px);
+  margin: 18vh auto auto auto;
+  border: 1px solid rgb(var(--slate-700) / 0.9);
+  border-radius: 1rem;
+  background: rgb(var(--c-surface));
+  color: rgb(var(--slate-100));
+  box-shadow: 0 30px 80px -30px rgb(2 6 23 / 0.8);
+  overflow: hidden;
+}
+.cv-menu::backdrop {
+  background: rgb(3 7 18 / 0.55);
+  backdrop-filter: blur(4px);
+}
+.cv-menu[open] { animation: palette-in .16s cubic-bezier(.22, 1, .36, 1); }
+
+.cv-option {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 0.75rem;
+  border-radius: 0.7rem;
+  border: 1px solid rgb(var(--slate-800) / 0.9);
+  background: rgb(var(--slate-900) / 0.55);
+  transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
+}
+.cv-option:hover,
+.cv-option:focus-visible {
+  border-color: rgb(var(--sky-500) / 0.6);
+  background: rgb(var(--sky-500) / 0.10);
+  transform: translateY(-1px);
+}
+.cv-option-icon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  border-radius: 0.55rem;
+  border: 1px solid rgb(var(--sky-400) / 0.35);
+  background: rgb(var(--sky-500) / 0.14);
+  color: rgb(var(--sky-300));
+}
+@media (prefers-reduced-motion: reduce) {
+  .cv-menu[open] { animation: none; }
+}

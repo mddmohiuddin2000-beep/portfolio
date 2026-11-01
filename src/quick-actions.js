@@ -123,7 +123,8 @@
 
       /* Actions */
       { g: 'Actions', t: 'Copy email address', i: 'copy', k: 'clipboard mail', hint: 'mddmohiuddin2000@gmail.com', run: copyEmail },
-      { g: 'Actions', t: 'Open academic CV (PDF)', i: 'file-text', k: 'resume cv download', hint: 'PDF', run: function () { window.open('assets/Academic-CV-Mohi.pdf', '_blank', 'noopener'); } },
+      { g: 'Actions', t: 'Open academic CV (PDF)', i: 'graduation-cap', k: 'resume cv research thesis download', hint: 'PDF', run: function () { window.open('assets/Academic-CV-Mohi.pdf', '_blank', 'noopener'); } },
+      { g: 'Actions', t: 'Open professional CV (PDF)', i: 'briefcase', k: 'resume cv ats job download', hint: 'PDF', run: function () { window.open('assets/Professional-CV-Mohi.pdf', '_blank', 'noopener'); } },
       { g: 'Actions', t: 'Print / save this page as PDF', i: 'printer', k: 'cv resume print', hint: 'Ctrl P', run: function () { window.print(); } },
       { g: 'Actions', t: 'Toggle light / dark theme', i: 'sun', k: 'appearance mode night', run: function () { var b = $('#theme-toggle'); if (b) b.click(); } },
       { g: 'Actions', t: 'Message on WhatsApp', i: 'message-circle', k: 'chat phone contact', hint: '+880 1516-505371', run: function () { window.open('https://wa.me/8801516505371', '_blank', 'noopener'); } },
@@ -309,6 +310,37 @@
     if (close) close.addEventListener('click', function () { dlg.close(); });
     dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
     dlg.addEventListener('close', function () { img.src = ''; });
+  })();
+
+  /* ============================================================
+     5. CV chooser (hero tile -> academic or professional CV)
+     ============================================================ */
+  (function cvChooser() {
+    var dlg = $('#cv-menu');
+    var tile = $('#cv-tile');
+    if (!dlg || !tile) return;
+
+    function open() {
+      if (dlg.open) return;
+      dlg.showModal();
+      var first = dlg.querySelector('.cv-option');
+      if (first) first.focus();
+    }
+
+    tile.addEventListener('click', open);
+
+    var closeBtn = $('#cv-menu-close');
+    if (closeBtn) closeBtn.addEventListener('click', function () { dlg.close(); });
+
+    // A backdrop click closes the menu.
+    dlg.addEventListener('click', function (e) {
+      if (e.target === dlg) { dlg.close(); return; }
+      // Choosing a version closes the menu; the anchor handles the new tab.
+      if (e.target.closest('.cv-option')) setTimeout(function () { dlg.close(); }, 0);
+    });
+
+    // Enter/Space already trigger the button; make Esc explicit for older browsers.
+    dlg.addEventListener('cancel', function () { dlg.close(); });
   })();
 
   /* ============================================================
