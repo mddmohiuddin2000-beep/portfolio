@@ -136,6 +136,8 @@ existed:
 ### Generated assets
 
 - `assets/og-cover.jpg` — 1200×630 social share card (75 KB, progressive JPEG)
+- `assets/Academic-CV-Mohi.pdf` + `assets/Professional-CV-Mohi.pdf` — the two CVs;
+  the hero "Professional CV" tile opens a chooser with one option per file
 - `assets/icon-192.png`, `assets/icon-512.png` — PWA icons
 - `manifest.json` + `sw.js` — installable app with an offline shell
 - `sitemap.xml`, `robots.txt`, `404.html` — crawler + error page
